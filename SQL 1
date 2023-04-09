@@ -3,7 +3,7 @@
 const host = "localhost";
 const user = "root";
 const password = "";
-const db = "ecommercCeE";
+const db = "ecommerce";
 
 
 
@@ -58,6 +58,25 @@ $sql = "CREATE TABLE IF NOT EXISTS `categories`(
                 `PAYMENT` FLOAT NOT NULL,
                 `ORDER_TIME` float NOT NULL)";
                 $result = mysqli_query($connect , $sql);
+
+
+            $sql = "INSERT INTO `categories` (`name`,`id`)  VALUES ('AHMED' , 10)";
+            $result = mysqli_query($connect , $sql);
+            
+            $sql = "INSERT INTO `categories` (`name`,`id`)  VALUES ('hazem' , 100)";
+            $result = mysqli_query($connect , $sql);
+
+            $sql = "UPDATE `categories` SET `name`='mohamed' WHERE `id` = 10";
+            $result = mysqli_query($connect , $sql);
+
+            $sql = "SELECT * FROM `categories` ";
+            $result = mysqli_query($connect , $sql);
+            $data = mysqli_fetch_assoc($result);
+            echo "<pre>";
+            print_r($data);
+
+            $sql = "DELETE FROM `categories` WHERE `id` = 10 ";
+            $result = mysqli_query($connect , $sql);
 
 
 echo "tmaam" ;
