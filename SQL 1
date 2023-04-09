@@ -1,0 +1,65 @@
+<?php
+
+const host = "localhost";
+const user = "root";
+const password = "";
+const db = "ecommercCeE";
+
+
+
+function get_con()
+{
+    $connect = mysqli_connect(host,user,password);
+    if (!$connect)
+    {
+        die("connection failed: ".mysqli_connect_error());
+    }
+
+    return $connect;
+
+}
+$connect = get_con();
+$sql = "CREATE DATABASE ". db ;
+$result = mysqli_query($connect , $sql);
+$connect = mysqli_connect(host,user,password,db);
+
+$sql = "CREATE TABLE IF NOT EXISTS `user`(
+    `ID` INT  PRIMARY KEY NOT NULL,
+    `NAME` VARCHAR(20) NOT NULL,
+    `EMAIL` VARCHAR(20) NOT NULL,
+    `PASSWORD` VARCHAR(30) NOT NULL,
+    `PHONE` INT NOT NULL)";
+    $result = mysqli_query($connect , $sql);
+
+$sql = "CREATE TABLE IF NOT EXISTS `categories`(
+        `NAME` VARCHAR(20) NOT NULL,
+        `ID` INT PRIMARY KEY NOT NULL )";
+        $result = mysqli_query($connect , $sql);
+        
+            
+            $sql = "CREATE TABLE IF NOT EXISTS `products`(
+                `ID` INT  PRIMARY KEY NOT NULL,
+                `NAME` VARCHAR(20) NOT NULL,
+                `DESCRIPTION` VARCHAR(50) NOT NULL,
+                `PRICE` FLOAT NOT NULL,
+                `IMAGE` VARCHAR(200) NOT NULL,
+                `CAT_ID` INT NOT NULL)";
+                $result = mysqli_query($connect , $sql);
+
+            $sql = "CREATE TABLE IF NOT EXISTS `contain`(
+                `OFFER` VARCHAR(20) NOT NULL,
+                `QUANTITY` INT NOT NULL )";
+                $result = mysqli_query($connect , $sql);
+
+            $sql = "CREATE TABLE IF NOT EXISTS `order`(
+                `ID` INT  PRIMARY KEY NOT NULL,
+                `USER` VARCHAR(20) NOT NULL,
+                `ADDRESS` VARCHAR(50) NOT NULL,
+                `PAYMENT` FLOAT NOT NULL,
+                `ORDER_TIME` float NOT NULL)";
+                $result = mysqli_query($connect , $sql);
+
+
+echo "tmaam" ;
+
+?>
